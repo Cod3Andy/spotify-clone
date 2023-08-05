@@ -2,7 +2,7 @@
     import 'modern-normalize/modern-normalize.css';
     import "../app.css";
 	import type { LayoutData } from './$types';
-    import LogoutButton from '$lib/components/LogoutButton.svelte';
+    import { LogoutButton } from '$components';
 
     export let data: LayoutData;
 
