@@ -2,16 +2,16 @@
     import 'modern-normalize/modern-normalize.css';
     import "../app.css";
 	import type { LayoutData } from './$types';
-    import { LogoutButton } from '$components';
 
     export let data: LayoutData;
 
     $: user = data.user;
 </script>
 
-{#if data.user}
-    <p>Hello {user?.display_name}</p>
-    <LogoutButton />
-{/if}
-
-<slot />
+<div id="main">
+    <div id="content">
+        <main id="main-content" class="pt-[30px] pb-[60px] px-[15px] md:px-[30px]">
+            <slot />
+        </main>
+    </div>
+</div>
