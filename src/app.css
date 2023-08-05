@@ -27,7 +27,7 @@
 }
 
 body {
-    @apply font-metropolis bg-bg-color text-text-color;
+    @apply font-metropolis bg-bg-color text-text-color h-[100vh] bg-gradient-to-bl from-sidebar-color to-bg-color;
 }
 
 ::selection {
@@ -75,8 +75,8 @@ select, input, button, a {
         @apply outline outline-2 outline-accent-color outline-offset-2;
     }
 }
-
-body {
+/* LOGIN PAGE */
+/* body {
     @apply h-[100vh] bg-gradient-to-bl from-sidebar-color to-bg-color;
 
 }
@@ -86,7 +86,7 @@ body {
 }
 
 .cover {
-    @apply flex-[1] ml-5;
+    @apply flex-[1] mt-[40px] md:mt-0 md:ml-5;
     img {
         @apply max-w-full;
     }
@@ -95,12 +95,13 @@ body {
 .content {
     @apply flex-[1.8];
     .buttons {
-        @apply mt-[40px] mr-[10px];
+        @apply mt-[40px] mr-[10px]; */
         .button {
             @apply mr-[10px] py-[10px] px-[20px] uppercase;
         }
-    }
+    /* }
     .logo {
         @apply w-[170px] max-w-full mb-[30px];
     } 
-}
+} */
+/**/
