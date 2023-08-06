@@ -24,14 +24,14 @@
     ];
 </script>
 
-<div class="nav-content" class:desktop class:mobile={!desktop}>
+<div class="nav-content " class:desktop class:mobile={!desktop}>
     <nav aria-label="Main">
-        <div class="nav-content-inner">
-            <img src={logo} class="logo w-[100px]" alt="Spotify" />
-            <ul>
+        <div class="nav-content-inner sticky hidden md:block top-0 p-5 min-w-sidebar-width bg-sidebar-color h-[100vh] overflow-auto">
+            <img src={logo} class="logo max-w-full w-[130px]" alt="Spotify" />
+            <ul class="p-0 mt-5 mx-0 mb-0 list-none">
                 {#each menuItems as item}
                     <li class:active={item.path === $page.url.pathname}>
-                        <a href={item.path}>
+                        <a href={item.path} class="flex items-center no-underline text-text-color text-sm font-medium p-[5px] my-[10px] mx-0 opacity-70 transition-opacity active:opacity-100 hover:opacity-100 focus:opacity-100">
                             <svelte:component 
                                 this={item.icon} 
                                 focusable="false" 
