@@ -18,14 +18,15 @@ export default {
         'dark-gray': 'var(--dark-gray)',
         'menu-text-color': 'var(--menu-text-color)',
         'border': 'var(--border)',
-        // 'header-height': 'var(--header-height)',
         'error': 'var(--error)',
         'warning':'var(--warning)',
       },
       minWidth: {
         'sidebar-width': 'var(--sidebar-width)',
       },
-
+      height: {
+        'header-height': 'var(--header-height)',
+      },
     },
   },
   plugins: [],
