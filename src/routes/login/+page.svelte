@@ -11,11 +11,12 @@
         <p class="">Enjoy ad-free music listening, offline playback, and more. Cancel anytime.</p>
         <div class="buttons mt-[40px] mr-[10px]">
             <Button 
-            element="a" 
-            variant="outline" 
-            href="https://www.spotify.com/"
-            target="_blank"
-            rel="noopener noreferrer">Sign Up</Button>
+                element="a" 
+                variant="outline" 
+                href="https://www.spotify.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >Sign Up</Button>
             <Button element="a" href="api/auth/login">Login</Button>
         </div>
     </div>

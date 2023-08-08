@@ -1,10 +1,13 @@
 <script>
-	import Navigation from "./Navigation.svelte";
+	import { browser } from "$app/environment";
+    import Navigation from "./Navigation.svelte";
 
 </script>
 <div class="contet flex justify-between items-center w-full">
     <div class="left">
-        <Navigation desktop={false}/>
+        {#if browser}
+            <Navigation desktop={false}/>
+        {/if}
     </div>
     <div class="right">
         Right

@@ -27,7 +27,7 @@
     {/if}
     <div id="content" class="flex-1">
         <div id="topbar" bind:this={topbar} class="flex items-center fixed z-[100] w-full h-header-height py-0 px-[15px] md:px-[30px] md:w-[calc(100%-250px)]">
-            <div class="topbar-bg bg-header-color absolute z-[-1] w-full h-full top-0 left-0" style:opacity={headerOpacity} />
+            <div class="topbar-bg bg-header-color absolute z-[-1] w-full h-full top-0 left-0" style:opacity={`${headerOpacity}`} />
             <Header />
         </div>
         <main id="main-content" class:logged-in={user} class="pb-[60px] px-[15px] md:px-[30px]">

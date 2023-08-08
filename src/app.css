@@ -76,9 +76,18 @@ select, input, button, a {
     }
 }
 
-svg {
-    @apply mr-3;
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    @apply h-[1px] overflow-hidden absolute whitespace-nowrap w-[1px];
 }
+
+svg {
+    @apply mr-3 align-middle;
+}
+.close-menu-button {
+        @apply absolute right-5 top-5;
+    }
 
 /* LOGIN PAGE */
 /* body {
