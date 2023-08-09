@@ -57,9 +57,9 @@
                     <li>
                         <a href="/profile">View Profile</a>
                     </li>
-                    <li class="flex items-center py-[10px] px-[15px] bg-transparent border-0 no-underline cursor-pointer text-menu-text-color w-full text-left text-[14px] hover:bg-black/[0.1]">
+                    <li>
                         <LogoutButton /> 
-                        <!-- PROBLEM -->
+                        <!-- PROBLEM WITH FOCUS -->
                     </li>
                 </ul>
             </div>
