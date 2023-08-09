@@ -13,5 +13,5 @@ import { invalidateAll } from '$app/navigation';
         invalidateAll();
     }
 }}>
-    <button type="submit">Logout</button>
+    <button type="submit" class="flex w-full h-full">Logout</button>
 </form>

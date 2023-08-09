@@ -76,17 +76,21 @@ select, input, button, a {
     }
 }
 
-.visually-hidden {
+.visually-hidden, .skip-link:not(:focus) {
     clip: rect(0 0 0 0);
     clip-path: inset(100%);
     @apply h-[1px] overflow-hidden absolute whitespace-nowrap w-[1px];
+}
+
+.skip-link:focus {
+    @apply absolute z-[200] bg-accent-color text-[#fff] p-[10px] top-[10px] left-[10px] outline-2 outline font-medium;
 }
 
 svg {
     @apply mr-3 align-middle;
 }
 .close-menu-button {
-        @apply absolute right-5 top-5;
+    @apply absolute right-5 top-5;
 }
 
 .tippy-box[data-theme~='menu'] {
@@ -113,6 +117,45 @@ max-width: 100%;
 .tippy-box[data-theme~='menu'][data-placement^='right'] > .tippy-arrow::before {
     border-right-color: var(--menu-background-color);
 }
+
+#nprogress .bar {
+    @apply bg-accent-color;
+}
+
+html.no-js .nav-content .nav-content-inner {
+    @apply max-md:block max-md:h-auto;
+}
+
+html.no-js #main {
+    @apply max-md:block;
+}
+
+html.no-js #topbar {
+    @apply sticky top-0 md:fixed bg-header-color h-auto pt-[10px] px-[20px];
+}
+
+html.no-js .logged-in {
+    @apply max-md:pt-[30px];
+}
+
+html.no-js .profile-button {
+    @apply hidden;
+}
+html.no-js #profile-menu {
+    @apply block;
+    .profile-menu-content {
+        ul {
+            @apply p-0 m-0;
+            li {
+                @apply inline-block;
+            }
+        }
+    }
+}
+html.no-js .content {
+    @apply max-md:justify-start;
+}
+
 /* LOGIN PAGE */
 /* body {
     @apply h-[100vh] bg-gradient-to-bl from-sidebar-color to-bg-color;

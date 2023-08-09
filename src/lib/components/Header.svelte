@@ -7,7 +7,7 @@
 
     $: user = $page.data.user;
 </script>
-<div class="contet flex justify-between items-center w-full">
+<div class="content flex justify-between items-center w-full">
     <div class="left">
         {#if browser}
             <Navigation desktop={false}/>
@@ -57,7 +57,10 @@
                     <li>
                         <a href="/profile">View Profile</a>
                     </li>
-                    <li class="flex items-center py-[10px] px-[15px] bg-transparent border-0 no-underline cursor-pointer text-menu-text-color w-full text-left text-[14px] hover:bg-black/[0.1]"><LogoutButton /></li>
+                    <li class="flex items-center py-[10px] px-[15px] bg-transparent border-0 no-underline cursor-pointer text-menu-text-color w-full text-left text-[14px] hover:bg-black/[0.1]">
+                        <LogoutButton /> 
+                        <!-- PROBLEM -->
+                    </li>
                 </ul>
             </div>
         </div>
