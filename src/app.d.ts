@@ -10,6 +10,10 @@ declare global {
 		}
 		// interface Platform {}
 	}
+	declare interface Window {
+		refreshPromise: Promise<Response> | null;
+	}
 }
+
 
 export {};
