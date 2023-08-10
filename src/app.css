@@ -76,6 +76,17 @@ select, input, button, a {
     }
 }
 
+.button {
+    @apply mr-[10px] py-[10px] px-[20px] uppercase;
+}
+
+.grid-items {
+    .card {
+        @apply h-full;
+    }
+    @apply grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6;
+}
+
 .visually-hidden, .skip-link:not(:focus) {
     clip: rect(0 0 0 0);
     clip-path: inset(100%);
@@ -100,9 +111,9 @@ svg {
 	box-shadow: 0 13px 20px rgba(0, 0, 0, 0.3);
 }
 .tippy-box[data-theme~='menu'] .tippy-content {
-padding: 0px;
-width: 200px;
-max-width: 100%;
+    padding: 0px;
+    width: 200px;
+    max-width: 100%;
 }
 
 .tippy-box[data-theme~='menu'][data-placement^='top'] > .tippy-arrow::before {
@@ -155,34 +166,3 @@ html.no-js #profile-menu {
 html.no-js .content {
     @apply max-md:justify-start;
 }
-
-/* LOGIN PAGE */
-/* body {
-    @apply h-[100vh] bg-gradient-to-bl from-sidebar-color to-bg-color;
-
-}
-
-.wrapper {
-    @apply flex flex-col md:flex-row items-center w-full max-w-[1200px] mt-[80px] mx-auto mb-0;
-}
-
-.cover {
-    @apply flex-[1] mt-[40px] md:mt-0 md:ml-5;
-    img {
-        @apply max-w-full;
-    }
-}
-
-.content {
-    @apply flex-[1.8];
-    .buttons {
-        @apply mt-[40px] mr-[10px]; */
-        .button {
-            @apply mr-[10px] py-[10px] px-[20px] uppercase;
-        }
-    /* }
-    .logo {
-        @apply w-[170px] max-w-full mb-[30px];
-    } 
-} */
-/**/

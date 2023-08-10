@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button } from "$components";
+	import { Button, Card } from "$components";
     import type { PageData } from "./$types";
 
     export let data: PageData;
@@ -46,10 +46,10 @@
 </script>
 
 {#each sections as section}
-    <section class="content-row">
-        <div class="content-row-header">
+    <section class="content-row mb-[40px]">
+        <div class="content-row-header flex items-center justify-between mb-5">
             <div class="right">
-                <h2 class="section-title">{section.title}</h2>
+                <h2 class="section-title text-[22px] font-semibold m-0">{section.title}</h2>
             </div>
             <div class="left">
                 <Button element="a" href={section.path} variant="outline"
@@ -59,8 +59,7 @@
         <div class="grid-items">
             {#each section.items as item}
                 <div class="grid-item">
-                    <h5>{item.type}</h5>
-                    <h3>{item.name}</h3>
+                    <Card {item} />
                 </div>
             {/each}
         </div>

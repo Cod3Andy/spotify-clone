@@ -57,7 +57,6 @@
         {/if}
         <main id="main-content" class:logged-in={user} class="pb-[60px] px-[15px] md:px-[30px]">
             <slot />
-            <div class="h-[700px]"></div>
         </main>
     </div>
 </div>
