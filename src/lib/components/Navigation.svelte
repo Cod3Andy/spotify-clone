@@ -78,7 +78,7 @@
     {/if}
 </svelte:head>
 
-<div class="nav-content" class:desktop class:mobile={!desktop}>
+<div class="nav-content sticky top-0" class:desktop class:mobile={!desktop}>
     {#if !desktop && isMobileMenuOpen}
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <div 
@@ -102,7 +102,7 @@
         {/if}
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <div 
-            class="nav-content-inner sticky hidden md:block top-0 p-5 min-w-sidebar-width bg-sidebar-color h-[100vh] overflow-auto"
+            class="nav-content-inner hidden md:block p-5 min-w-sidebar-width bg-sidebar-color h-[100vh] overflow-auto"
             class:is-hidden={!isOpen} 
             style:visibility={isOpen ? 'visible' : 'hidden'}
             on:keyup={handleEscape}
