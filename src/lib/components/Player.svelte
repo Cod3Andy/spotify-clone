@@ -56,3 +56,11 @@
         {/if}
     </button>
 </div>
+<style>
+    html.no-js .player audio {
+        @apply block w-[200px];
+    }
+    html.no-js .player button {
+        @apply hidden;
+    }
+</style>

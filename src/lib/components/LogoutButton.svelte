@@ -1,5 +1,6 @@
 <script lang="ts">
-import { invalidateAll } from '$app/navigation';
+    import { invalidateAll } from '$app/navigation';
+	import Button from './Button.svelte';
 </script>
 
 <form method="POST" action="/api/auth/logout" class="flex items-center py-[10px] px-[15px] bg-transparent border-0 no-underline cursor-pointer text-menu-text-color w-full text-left text-[14px] hover:bg-black/[0.1]" 
@@ -14,5 +15,5 @@ on:submit|preventDefault={async () => {
         invalidateAll();
     }
 }}>
-    <button type="submit" class="flex w-full h-full">Logout</button>
+    <Button element="button" type="submit" class="flex w-full h-full">Logout</Button>
 </form>

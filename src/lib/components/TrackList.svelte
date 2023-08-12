@@ -99,5 +99,12 @@
             }
         } 
     }
+    
+    html.no-js .row .number-column {
+        @apply flex items-center w-[200px];
+    }
+    html.no-js .row .number-column .player {
+            @apply block w-full ml-[10px];
+        }
     /* BAD CODE ^^^ HOW TO DO THE SAME IN TAILWIND??? */
 </style>
