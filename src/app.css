@@ -166,3 +166,12 @@ html.no-js #profile-menu {
 html.no-js .content {
     @apply max-md:justify-start;
 }
+html.no-js .load-more {
+    @apply hidden;
+}
+html.js .pagination {
+    @apply hidden;
+}
+html.no-js .pagination {
+    @apply flex justify-between mt-[40px];
+}
