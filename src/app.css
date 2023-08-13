@@ -34,6 +34,10 @@ body {
     @apply bg-accent-color text-text-color;
 }
 
+input {
+    @apply border-none py-0 px-5 h-[35px] rounded-[20px] text-[14px] text-medium-gray;
+}
+
 h1, h2, h3, h4, h5, h6 {
     @apply font-bold leading-[1.4] my-[0.5em];
 }
