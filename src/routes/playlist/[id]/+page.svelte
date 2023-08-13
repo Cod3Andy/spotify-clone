@@ -1,15 +1,21 @@
 <script lang="ts">
 	import { page } from "$app/stores";
 	import { Button, ItemPage, TrackList } from "$components";
-    import type { PageData } from "./$types";
+	import { Heart } from "lucide-svelte";
+    import type { ActionData, PageData } from "./$types";
+	import { applyAction, enhance } from "$app/forms";
 
     export let data:PageData;
+    export let form: ActionData
 
     let isLoading = false;
+    let isLoadingFollow = false;
+    let followButton: Button<'button'>;
 
     $: color = data.color;
     $: playlist = data.playlist;
     $: tracks = data.playlist.tracks;
+    $: isFollowing = data.isFollowing;
     $: currentPage = $page.url.searchParams.get('page') || 1;
 
     let filteredTracks: SpotifyApi.TrackObjectFull[];
@@ -51,6 +57,37 @@
         </p>
     </div>
 
+    <div class="playlist-actions flex justify-end mt-[10px] mx-0 mb-[30px]">
+        {#if data.user?.id === playlist.owner.id}
+            <Button element="a" variant="outline">Edit Playlist</Button>
+        {:else if isFollowing !== null}
+            <form 
+                action={`?/${isFollowing ? 'unFollowPlaylist' : 'followPlaylist'}`} 
+                class="follow-form" 
+                method="POST"
+                use:enhance={() => {
+                    isLoadingFollow = true;
+                    return async ({result}) => {
+                        isLoadingFollow =false;
+                        await applyAction(result);
+                        followButton.focus();
+                        if(result.type === "success") {
+                            isFollowing = !isFollowing;
+                        }
+                    };
+                }}
+            >
+                <Button bind:this={followButton} element="button" type="submit" variant="outline flex items-center" disabled={isLoadingFollow}>{isFollowing ? 'Unfollow' : 'Follow'}
+                    <Heart aria-hidden focusable="false" fill={isFollowing ? 'var(--text-color)': 'none'} class="ml-[10px] w-[22px] h-[22px]" />
+                    <span class="visually-hidden">{playlist.name} playlist</span>
+                </Button>
+                {#if form?.followError}
+                    <p class="error text-right text-error text-[14px]">{form.followError}</p>
+                {/if}
+            </form>
+        {/if}
+    </div>
+    
     {#if playlist.tracks.items.length > 0}
         <TrackList tracks={filteredTracks} />
         {#if tracks.next}
@@ -76,7 +113,6 @@
                     {/if}
                 </div>
             </div>
-        
         {:else}
         <div class="empty-playlist text-center mt-[40px]">
             <p class="text-[22px] font-semibold">No items added to this playlist yet.</p>
