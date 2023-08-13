@@ -8,7 +8,7 @@
 </script>
 
 <div class="banner flex flex-col relative sm:flex-row sm:items-end mt-[-94px] mx-[-30px] mb-0 pt-[94px] px-[30px] pb-[20px]">
-    <div class="banner-gradient absolute top-0 left-0 z-[1] w-full h-[150%]" style:background-image='linear-gradient(0deg, transparent, {color || 'var(--light-gray)'}' />
+    <div class="banner-gradient absolute top-0 left-0 z-[1] w-full h-[150%]" style:background-image='linear-gradient(0deg, transparent, {color || 'var(--light-gray)'})' />
     <div class="cover z-10 mr-0 mb-[30px] md:mr-[40px] md:mb-0">
         {#if image}
             <img src={image} alt={title} />
