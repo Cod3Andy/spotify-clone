@@ -137,6 +137,10 @@ svg {
     @apply bg-accent-color;
 }
 
+.modal.is-open {
+    @apply block;
+}
+
 html.no-js .nav-content .nav-content-inner {
     @apply max-md:block max-md:h-auto;
 }

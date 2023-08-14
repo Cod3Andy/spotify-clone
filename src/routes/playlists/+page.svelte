@@ -1,9 +1,13 @@
 <script lang="ts">
-	import {Card, Button, Pagination} from "$components";
+	import {Card, Button, Pagination, PlaylistForm} from "$components";
+	import Modal from "$components/Modal.svelte";
 	import { toasts } from "$stores";
+	import MicroModal from "micromodal";
     import type { PageData } from "./$types";
+    import type { ActionData } from './new/$types';
 
     export let data: PageData;
+    export let form: ActionData;
 
     let isLoading = false;
 
@@ -29,7 +33,10 @@
     {#if playlists.items.length > 0}
         <div class="title flex items-center justify-between">
             <h1>{data.title}</h1>
-            <Button element="a" href="/playlists/new">+ Add New</Button>
+            <Button element="a" href="/playlists/new" on:click={(e) => {
+                e.preventDefault();
+                MicroModal.show('add-playlist-modal');
+            }} >+ Add New</Button>
         </div>
             <div class="grid-items mb-10">
                {#each playlists.items as item}
@@ -44,3 +51,7 @@
         </div>
     {/if}
 </div>
+
+<Modal id="add-playlist-modal" title="Add a New Playlist">
+    <PlaylistForm {form} userID={data.user?.id} action="/playlists/new" />
+</Modal>
