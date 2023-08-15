@@ -43,6 +43,7 @@
 	"dependencies": {
 		"@fontsource/metropolis": "^5.0.6",
 		"@types/spotify-api": "^0.0.22",
+		"howler": "^2.2.3",
 		"lucide-svelte": "^0.263.0",
 		"micromodal": "^0.4.10",
 		"modern-normalize": "^2.0.0",

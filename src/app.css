@@ -183,3 +183,6 @@ html.js .pagination {
 html.no-js .pagination {
     @apply flex justify-between mt-[40px];
 }
+.seek-slider::-webkit-slider-thumb, .seek-slider::-moz-range-thumb {
+    @apply w-5 h-5 bg-red-600 border-red-50 border-2 rounded-[50%] cursor-pointer z-[9999] appearance-none;
+}

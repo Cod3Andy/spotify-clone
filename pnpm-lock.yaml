@@ -11,6 +11,9 @@ dependencies:
   '@types/spotify-api':
     specifier: ^0.0.22
     version: 0.0.22
+  howler:
+    specifier: ^2.2.3
+    version: 2.2.3
   lucide-svelte:
     specifier: ^0.263.0
     version: 0.263.0(svelte@4.1.2)
@@ -1517,6 +1520,10 @@ packages:
     dependencies:
       function-bind: 1.1.1
     dev: true
+
+  /howler@2.2.3:
+    resolution: {integrity: sha512-QM0FFkw0LRX1PR8pNzJVAY25JhIWvbKMBFM4gqk+QdV+kPXOhleWGCB6AiAF/goGjIHK2e/nIElplvjQwhr0jg==}
+    dev: false
 
   /ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}

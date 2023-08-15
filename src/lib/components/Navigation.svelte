@@ -161,9 +161,9 @@
             @apply hidden;
         }
     }
-    :global(.close-menu-button) {
+    /* :global(.close-menu-button) {
         position: absolute;
         right: 20px;
         top: 20px;
-    }
+    } */
 </style>

@@ -1,9 +1,10 @@
 <script lang="ts">
-    import {Navigation, Header, Toasts} from '$components';
+    import {Navigation, Header, Toasts, Playbar} from '$components';
     import { page } from '$app/stores';
     import NProgress from 'nprogress';
     import MicroModal from 'micromodal';
     import { hideAll } from 'tippy.js';
+    import {Howl, Howler} from 'howler';
     import 'nprogress/nprogress.css';
     import 'modern-normalize/modern-normalize.css';
     import "../app.css";
@@ -72,6 +73,7 @@
         </main>
     </div>
 </div>
+<Playbar />
 
 <style>
     .logged-in {
