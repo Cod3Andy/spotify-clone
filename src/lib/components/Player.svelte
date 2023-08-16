@@ -7,7 +7,7 @@
 
     type Track = SpotifyApi.TrackObjectFull | SpotifyApi.TrackObjectSimplified;
     export let track: Track;
-
+    
     const dispatch = createEventDispatcher<{
         play: { track: Track };
         pause: { track: Track };

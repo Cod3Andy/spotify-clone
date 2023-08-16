@@ -1,17 +1,128 @@
 <script lang="ts">
 	import { Heart, ListMusic, MonitorSmartphone, Play, PlaySquare, Repeat2, Shuffle, SkipBack, SkipForward, Volume1 } from "lucide-svelte";
     import { page } from "$app/stores";
-    import {Howl, Howler} from 'howler';
-
+    import { Howl, Howler } from 'howler';
+    import { onMount, onDestroy } from 'svelte';
+    import { track, tracks } from "$stores/track";
+    import Player from "./Player.svelte";
+    // import track from '$components/Player.svelte';
+    // import current from '$components/Player.svelte';
+    let duration = 0;
+    let time = 0;
+    let playing = false;
+    let currentSound: { duration: () => number; seek: (arg0: number | undefined) => number; play: () => void; pause: () => void; } | null = null;
     let progress: number = 0;
     let volume: number = 0.5;
+    let paused: boolean = true;
+    let unsubscribe = () => {};
+    let audio = new Howl({
+        src: $track.preview_url,
+    });
 
+    $: percent = ((time / duration) * 100).toFixed(2) || 0;
+
+    onMount(function initPlayer() {
+    unsubscribe = tracks.subscribe(function (value) {
+    if (Object.keys($track).length || !value.length) return;
+
+    $track = value.shift();
+    tracks.set(value);
+    currentSound = createCurrentSong();
+    });
+
+    Howler.volume(volume);
+    loadNewSong();
+    currentSound = createCurrentSong();
+    });
+
+    onDestroy(unsubscribe);
+    function loadNewSong() {
+    if (Object.keys($track).length || !$tracks.length) {
+    return;
+    }
+
+    nextFromPlaylist();
+    }
+    function resetSongStatus() {
+    $track = {};
+    currentSound = null;
+    duration = 0;
+    time = 0;
+    playing = false;
+    };
+    
+    function createCurrentSong() {
+    const playing1 = playing;
+    return new Howl({
+    src: [$track.preview_url],
+    xhrWithCredentials: true,
+    preload: true,
+    html5: false,
+    pool: 0,
+    onload: function setupSong() {
+      duration = currentSound.duration();
+      time = $track.duration_ms;
+
+      if (time) {
+        currentSound.seek(time);
+      }
+
+      if (playing1) {
+        playSound();
+      }
+    },
+    onend: function cleanupSong() {
+      $track = {};
+      if ($tracks.length) {
+        loadNewSong();
+      } else {
+        resetSongStatus();
+      }
+    },
+    });
+    };
+    function nextFromPlaylist() {
+    $track = $tracks.shift();
+    $tracks = $tracks; //TODO: nicer solution xD
+    currentSound = createCurrentSong();
+    };
+
+    function playSound() {
+        currentSound.play();
+        playing = true;
+
+        const pollingSongData = setInterval(function updateTimer() {
+            if (!playing) {
+            time = 0;
+            clearInterval(pollingSongData);
+            return;
+            }
+
+            time = currentSound.seek();
+        }, 200);
+        };
+
+        function pauseSound() {
+        currentSound.pause();
+        playing = false;
+    };
+
+    
     $: user = $page.data.user;
+    console.log(track);
 </script>
-
+    <audio
+        on:play={playSound}
+        on:pause={pauseSound}
+        bind:this={audio} 
+        bind:paused 
+        controls 
+        src={$track.preview_url} 
+        preload="none" 
+    />
 <section class="playbar flex z-50 gap-28 sticky bottom-0 w-full h-[13vh] bg-black">
     <div class="track-info flex items-center w-[22%] ml-4 gap-2">
-        <img src={user.images[0].url} alt="" class="w-16 h-16 rounded-md">
+        <img src={user.images[0].url} alt="" class="w-14 h-14 rounded-sm">
         <div class="info flex flex-col w-[80%]">
             <span class="title text-[14px] font-medium truncate cursor-pointer hover:underline">Instrument of Surrender</span>
             <span class="artist text-[11px] font-light truncate cursor-pointer hover:underline">Sea Power</span>
@@ -28,7 +139,7 @@
             <button class="cursor-default">
                 <SkipBack fill="var(--light-gray)" focusable="false" aria-hidden class="w-5 h-5 text-light-gray hover:text-white hover:fill-white" />
             </button>
-            <button class="cursor-default">
+            <button on:click={playSound} class="cursor-default">
                 <Play class="pl-[5px] py-[2px] pr-[2px] w-9 h-9 fill-black bg-white rounded-full hover:scale-105" focusable="false" aria-hidden />
             </button>
             <SkipForward fill="var(--light-gray)" focusable="false" aria-hidden class="w-5 h-5 text-light-gray hover:text-white hover:fill-white" />
